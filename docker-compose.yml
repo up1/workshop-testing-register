@@ -1,0 +1,17 @@
+services:
+  db:
+    image: mysql:9
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: demodb
+      MYSQL_USER: user01
+      MYSQL_PASSWORD: password01
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 3
+    volumes:
+      - ./db/tables.sql:/docker-entrypoint-initdb.d/1.sql
