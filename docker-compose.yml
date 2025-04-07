@@ -15,3 +15,17 @@ services:
       retries: 3
     volumes:
       - ./db/tables.sql:/docker-entrypoint-initdb.d/1.sql
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 3
+    depends_on:
+      db:
+        condition: service_healthy

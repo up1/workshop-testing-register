@@ -2,7 +2,7 @@
 * API
 * WEB UI
 
-## Start API 
+## 1. Start API 
 * NodeJS
 * MySQL Database
 
@@ -31,5 +31,26 @@ Content-Type: application/json
   "password": "12345",
   "address": ""
 }
+```
+
+## 2. Start Web
+```
+$cd web
+
+$npm install
+$npm run dev
+``` 
+
+Access in web browser
+* http://localhost:5173/
+
+## 3. Start all with docker
+* database
+* api
+* web
+
+```
+$docker compose build
+$docker compose up -d
 ```
 
