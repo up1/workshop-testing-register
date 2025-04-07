@@ -4,6 +4,7 @@ const registerRoutes = require('./routes/registerRoutes');
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors())
 
 app.use('/api', registerRoutes);
 
