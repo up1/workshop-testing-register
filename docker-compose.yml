@@ -21,6 +21,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
+    environment:
+      DB_HOST: db
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
       interval: 5s
@@ -28,4 +30,14 @@ services:
       retries: 3
     depends_on:
       db:
+        condition: service_healthy
+  
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    ports:
+      - "8000:80"
+    depends_on:
+      api:
         condition: service_healthy
