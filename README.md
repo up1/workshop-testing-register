@@ -14,6 +14,7 @@ $docker compose ps
 
 Start API server
 ```
+$cd api
 $npm start
 ```
 
