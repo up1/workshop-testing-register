@@ -1,0 +1,51 @@
+{
+	"info": {
+		"_postman_id": "bb80ab18-e517-40d2-8eb1-430d411a4344",
+		"name": "register-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "1453931",
+		"_collection_link": "https://red-firefly-245852.postman.co/workspace/imc-rest~e6755644-bd64-4736-861a-edbed044130e/collection/1453931-bb80ab18-e517-40d2-8eb1-430d411a4344?action=share&source=collection_link&creator=1453931"
+	},
+	"item": [
+		{
+			"name": "Register-success",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Register success with status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"// Check json response",
+							"pm.test(\"Register success with check response body\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.message).to.eql(\"สมัครสมาชิกสำเร็จ\");",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"สมเกียรติ\",\n  \"age\": 60,\n  \"phone\": \"0868686868\",\n  \"email\": \"somkiat@xxx.com\",\n  \"password\": \"12345678\",\n  \"address\": \"122/22 prom condo\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/api/register"
+			},
+			"response": []
+		}
+	]
+}
