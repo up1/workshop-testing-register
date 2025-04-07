@@ -54,3 +54,6 @@ $docker compose build
 $docker compose up -d
 ```
 
+Access in web browser
+* http://localhost:8000/
+

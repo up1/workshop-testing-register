@@ -6,5 +6,6 @@ COPY . .
 RUN npm run build
 
 FROM nginx:alpine AS step02
+COPY nginx_reverse.conf /etc/nginx/conf.d/default.conf
 COPY --from=step01 /app/dist /usr/share/nginx/html
 EXPOSE 80
